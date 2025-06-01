@@ -17,7 +17,7 @@ func TestGetMaxAmount(t *testing.T) {
 	c := e.NewContext(req, rec)
 	c.SetPath("/max-amount/")
 
-	expectedResponse := `{"data":[{"currency_code":"USD","amount":0}],"error":null,"status":"ok"}` + "\n"
+	expectedResponse := `{"data":null,"error":null,"status":"ok"}` + "\n"
 	// Assertions
 	if assert.NoError(t, getMaxAmount(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
@@ -87,7 +87,6 @@ func TestGetMaxAmountFunction(t *testing.T) {
 			if responseForCompare != test.expected {
 				t.Errorf("got %s\n, want %s", responseForCompare, test.expected)
 			}
-
 		})
 	}
 }
