@@ -5,15 +5,12 @@ import (
 	"net/http"
 )
 
-func getUser(c echo.Context) error {
-	// User ID from path `users/:id`
-	id := c.Param("id")
-	return c.String(http.StatusOK, id)
-}
+func getMaxAmount(c echo.Context) error {
+	maxAmountData := []MaxAmountData{
+		{CurrencyCode: "USD"},
+	}
 
-func show(c echo.Context) error {
-	// Get team and member from the query string
-	team := c.QueryParam("team")
-	member := c.QueryParam("member")
-	return c.String(http.StatusOK, "team:"+team+", member:"+member)
+	maxAmount := NewMaxAmount(maxAmountData, nil)
+	// not need to marshal by our self
+	return c.JSON(http.StatusOK, maxAmount)
 }

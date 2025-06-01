@@ -5,6 +5,5 @@ import (
 )
 
 func CreateRouting(e *echo.Echo) {
-	e.GET("/users/:id", getUser)
-	e.GET("/show", show)
+	e.GET("/max-amount", getMaxAmount)
 }
